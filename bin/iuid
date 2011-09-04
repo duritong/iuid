@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+# CLI client for Trocla.
+#
+require 'rubygems'
+require 'iuid'
+require 'optparse'
+require 'yaml'
+
+options = { :config_file => nil }
+
+OptionParser.new do |opts|
+  opts.on("--version", "-V", "Version information") do
+    puts Trocla::VERSION::STRING
+    exit
+  end
+
+  opts.on("--config CONFIG", "-c", "Configuration file") do |v|
+    if File.exist?(v)
+      options[:config_file] = v
+    else
+      STDERR.puts "Cannot find config file: #{v}"
+      exit 1
+    end
+  end
+end.parse!
+
+def create(options)
+  miss('category') unless options[:category]
+  Iuid.new(options.delete(:config_file)).create(
+    options.delete(:name),
+    options.delete(:category)
+  )
+end
+
+def get(options)
+  Iuid.new(options.delete(:config_file)).get(
+    options.delete(:name)
+  )
+end
+def set(options)
+  miss('uid') unless options[:category]  # this is actually the uid
+  Iuid.new(options.delete(:config_file)).set(
+    options.delete(:name),
+    options.delete(:category)
+  )
+end
+
+def delete(options)
+  Iuid.new(options.delete(:config_file)).delete(
+    options.delete(:name)
+  )
+end
+
+def miss(what)
+  STDERR.puts "Missing #{what}, exiting..."
+  exit 1
+end
+
+actions=['create','get','set','delete']
+
+if !(ARGV.length < 2) && (action=ARGV.shift) && actions.include?(action)
+    options[:name] = ARGV.shift
+    options[:category] = ARGV.shift
+    begin
+      if result = send(action,options)
+        puts result.is_a?(String) ? result : result.inspect
+      end
+    rescue Exception => e
+      STDERR.puts "Action failed with the following message: #{e.message}" unless e.message == 'exit'
+      exit 1
+    end
+else
+    STDERR.puts "Please supply one of the following actions: #{actions.join(', ')}"
+    exit 1
+end
+
