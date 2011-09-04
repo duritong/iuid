@@ -62,7 +62,7 @@ class Iuid
   end
 
   def categories
-    config['options']['categories'] || {}
+    config['categories'] || {}
   end
   
   def build_cache
