@@ -17,7 +17,7 @@ iuid. By default it uses a simple yaml file.
 
 Assuming that we have an empty iuid storage.
 
-    trocla create user1 category1
+    iuid create user1 category1
 
 This will create (if not already stored in iuid) a random uid for the key
 user1 and use category1 as a range information from which within a uid should
