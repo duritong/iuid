@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/duritong/moneta.git
+  revision: 38125d0d598891f27fa6836cbc57cb928831ac4f
+  specs:
+    moneta (0.6.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -8,7 +14,6 @@ GEM
       git (>= 1.2.5)
       rake
     mocha (0.9.12)
-    moneta (0.6.1)
     rake (0.9.2)
     rcov (0.9.9)
     rdoc (3.8)
@@ -28,7 +33,7 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   jeweler (~> 1.6.4)
   mocha
-  moneta (>= 0.6.1)
+  moneta (>= 0.6.1)!
   rcov
   rdoc (~> 3.8)
   rspec (~> 2.3.0)
