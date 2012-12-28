@@ -53,9 +53,7 @@ This will delete the stored uid and return it.
 
 ## Installation
 
-Simply build and install the gem. BUT trocla is based on a not yet published
-version of [moneta](https://github.com/wycats/moneta). You can build a new
-moneta version based on the latest master as version 0.6.1 and instal that one.
+Simply build and install the gem.
 
 ## Contributing to iuid
  
