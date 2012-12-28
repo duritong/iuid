@@ -1,4 +1,5 @@
 # iuid
+[![Build Status](https://travis-ci.org/duritong/iuid.png)](https://travis-ci.org/duritong/iuid)
 
 iuid is a simple username / uid storage that can autogenerate uids.
 
