@@ -25,7 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.1.5)
+  bundler
   jeweler (~> 1.6.4)
   mocha
   moneta (~> 0.7.2)
