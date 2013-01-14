@@ -1,4 +1,5 @@
 # iuid
+[![Build Status](https://travis-ci.org/duritong/iuid.png)](https://travis-ci.org/duritong/iuid)
 
 iuid is a simple username / uid storage that can autogenerate uids.
 
@@ -62,7 +63,6 @@ Simply build and install the gem.
 1. be sure to update as well the moneta gem, trocla now uses the official moneta releases and supports current avaiable versions.
 1. Options for moneta's backends have changed. For example, if you are using the yaml-backend you will likely need to change the adapter option `:path:` to `:file:` to match moneta's new API.
 1. **IMPORTANT:** If you are using the yaml backend you need to migrate the current data *before* using the new trocla version! You can migrate the datastore by using the following two sed commands `sed -i 's/^    /  /' /PATH/TO/trocla_data.yaml` && `sed -i '/^  value\:/d' /PATH/TO/trocla_data.yaml`.
-
 
 ## Contributing to iuid
  

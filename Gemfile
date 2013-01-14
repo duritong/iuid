@@ -8,7 +8,7 @@ gem "moneta", "~> 0.7.2"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem "rspec", "~> 2.3.0"
+  gem "rspec", "~> 2.4.0"
   gem "rdoc", "~> 3.8"
   gem "mocha"
   gem "bundler", "~> 1.2.3"

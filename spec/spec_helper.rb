@@ -19,14 +19,14 @@ end
 def test_config
   return @config unless @config.nil?
   @config = default_config
-  @config.delete('adapter_options')
-  @config['adapter'] = :Memory
   @config['categories'] = {
     'global' => 100,
     'global2' => 200,
     'global3' => 201,
     'max' => 4294967295
   }
+  @config['adapter'] = :Memory
+  @config.delete('adapter_options')
   @config
 end
 
