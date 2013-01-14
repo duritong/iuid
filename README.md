@@ -53,9 +53,16 @@ This will delete the stored uid and return it.
 
 ## Installation
 
-Simply build and install the gem. BUT trocla is based on a not yet published
-version of [moneta](https://github.com/wycats/moneta). You can build a new
-moneta version based on the latest master as version 0.6.1 and instal that one.
+Simply build and install the gem.
+
+## Update & Changes
+
+### to 0.0.3
+
+1. be sure to update as well the moneta gem, trocla now uses the official moneta releases and supports current avaiable versions.
+1. Options for moneta's backends have changed. For example, if you are using the yaml-backend you will likely need to change the adapter option `:path:` to `:file:` to match moneta's new API.
+1. **IMPORTANT:** If you are using the yaml backend you need to migrate the current data *before* using the new trocla version! You can migrate the datastore by using the following two sed commands `sed -i 's/^    /  /' /PATH/TO/trocla_data.yaml` && `sed -i '/^  value\:/d' /PATH/TO/trocla_data.yaml`.
+
 
 ## Contributing to iuid
  

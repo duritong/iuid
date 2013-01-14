@@ -67,9 +67,8 @@ class Iuid
   
   def build_cache
     require 'moneta'
-    require "moneta/adapters/#{config['adapter'].downcase}"
     lconfig = config
-    Moneta::Builder.new { run eval( "Moneta::Adapters::#{lconfig['adapter']}"), lconfig['adapter_options'] }
+    Moneta.new(lconfig['adapter'], lconfig['adapter_options']||{})
   end
   
   def config
