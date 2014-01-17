@@ -56,6 +56,14 @@ This will delete the stored uid and return it.
 
 Simply build and install the gem.
 
+## Update & Changes
+
+### to 0.0.3
+
+1. be sure to update as well the moneta gem, iuid now uses the official moneta releases and supports current avaiable versions.
+1. Options for moneta's backends have changed. For example, if you are using the yaml-backend you will likely need to change the adapter option `:path:` to `:file:` to match moneta's new API.
+1. **IMPORTANT:** If you are using the yaml backend you need to migrate the current data *before* using the new iuid version! You can migrate the datastore by using the following two sed commands `sed -i -e :a -e '$!N;s/\n    value: //;ta' -e 'P;D' /PATH/TO/iuid_date.yaml` && `sed -i 's/^    /  /' /PATH/TO/iuid_date.yaml`.
+
 ## Contributing to iuid
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet

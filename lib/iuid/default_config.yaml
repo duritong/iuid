@@ -1,6 +1,6 @@
 ---
 options:
     max_uid: 4294967295
-adapter: YAML
+adapter: :YAML
 adapter_options:
-    :path: '/tmp/iuid.yaml'
+    :file: '/tmp/iuid.yaml'

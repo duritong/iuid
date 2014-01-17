@@ -39,7 +39,7 @@ class Iuid
     if (curr_uid = cache["_category_#{category}_curr_uid"]) || max_uid && alluids.include?(curr_uid=max_uid)
       uid=curr_uid + 1
       while alluids.include?(uid) 
-        uid = curr_uid + 1
+        uid = uid + 1
       end
       raise "Max uid is 4294967295" if uid > 4294967295
       if coll_category = categories.keys.find{|c| categories[c] > max_uid && uid >= categories[c] }
