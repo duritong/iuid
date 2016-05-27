@@ -3,13 +3,22 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "moneta", "~> 0.7.2"
+if RUBY_VERSION.to_f > 1.8
+  gem "moneta"
+else
+  gem "moneta", "~> 0.7.20"
+end
 
-# Add dependencies to develop your gem here.
-# Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem "rspec", "~> 2.4.0"
-  gem "rdoc", "~> 3.8"
-  gem "mocha"
-  gem "jeweler", "~> 1.6.4"
+  if RUBY_VERSION.to_f > 1.8
+    gem "rspec"
+    gem "rdoc"
+    gem "jeweler"
+  else
+    gem "rspec", "~> 2.4"
+    gem "rdoc", "~> 3.8"
+    gem "jeweler", "~> 1.6"
+    gem "addressable", "~> 2.3.8"
+  end
+  gem 'rspec-pending_for'
 end

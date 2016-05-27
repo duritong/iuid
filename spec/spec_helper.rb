@@ -1,16 +1,12 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
-require 'mocha'
+require 'yaml'
 require 'iuid'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
-
-RSpec.configure do |config|
-  
-end
 
 def default_config
   @default_config ||= YAML.load(File.read(File.expand_path(base_dir+'/lib/iuid/default_config.yaml')))
