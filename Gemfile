@@ -7,6 +7,9 @@ if RUBY_VERSION.to_f > 1.8
   gem "moneta"
 else
   gem "moneta", "~> 0.7.20"
+  gem "highline", "~> 1.6.2"
+  gem 'rake', '< 11'
+  gem 'git', '< 1.3'
 end
 
 group :development do
