@@ -1,27 +1,11 @@
-source "http://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
+# frozen_string_literal: true
 
-if RUBY_VERSION.to_f > 1.8
-  gem "moneta"
-else
-  gem "moneta", "~> 0.7.20"
-  gem "highline", "~> 1.6.2"
-  gem 'rake', '< 11'
-  gem 'git', '< 1.3'
-end
+source 'https://rubygems.org'
 
-group :development do
-  if RUBY_VERSION.to_f > 1.8
-    gem "rspec"
-    gem "rdoc"
-    gem "jeweler"
-  else
-    gem "rspec", "~> 2.4"
-    gem "rdoc", "~> 3.8"
-    gem "jeweler", "~> 1.6"
-    gem "addressable", "~> 2.3.8"
-  end
-  gem 'rspec-pending_for'
+# This will load dependencies from iuid.gemspec
+gemspec
+
+# JRuby specific dependencies that are not needed as part of the gem
+if defined?(RUBY_ENGINE) && (RUBY_ENGINE == 'jruby')
+  gem 'jruby-openssl'
 end

@@ -1,5 +1,5 @@
 # iuid
-[![Build Status](https://travis-ci.org/duritong/iuid.png)](https://travis-ci.org/duritong/iuid)
+[![Ruby](https://github.com/duritong/iuid/actions/workflows/ruby.yml/badge.svg)](https://github.com/duritong/iuid/actions/workflows/ruby.yml)
 
 iuid is a simple username / uid storage that can autogenerate uids.
 
@@ -48,7 +48,7 @@ This will set the uid 1024 for the key user3
 
 ### delete
 
-    iuid delete user1 plain
+    iuid delete user1
 
 This will delete the stored uid and return it.
 
@@ -58,11 +58,37 @@ Simply build and install the gem.
 
 ## Update & Changes
 
-### to 0.0.3
+See [CHANGELOG.md](CHANGELOG.md).
 
-1. be sure to update as well the moneta gem, iuid now uses the official moneta releases and supports current avaiable versions.
-1. Options for moneta's backends have changed. For example, if you are using the yaml-backend you will likely need to change the adapter option `:path:` to `:file:` to match moneta's new API.
-1. **IMPORTANT:** If you are using the yaml backend you need to migrate the current data *before* using the new iuid version! You can migrate the datastore by using the following two sed commands `sed -i -e :a -e '$!N;s/\n    value: //;ta' -e 'P;D' /PATH/TO/iuid_date.yaml` && `sed -i 's/^    /  /' /PATH/TO/iuid_date.yaml`.
+## Releasing
+
+Releases are fully automated via GitHub Actions (`.github/workflows/release.yml`). The workflow runs specs, builds the gem, creates a GitHub Release with the `.gem` artifact, and publishes to RubyGems.
+
+### Prerequisites
+
+1. **GitHub Permissions**: In repository **Settings** → **Actions** → **General**, ensure **Workflow permissions** is set to **Read and write permissions**.
+2. **RubyGems Trusted Publishing**: On [rubygems.org](https://rubygems.org), add a GitHub Actions trusted publisher for `duritong/iuid` and workflow `release.yml`.
+
+### Triggering a Release
+
+#### Option A: GitHub Actions UI (Manual Trigger)
+
+1. Go to the **Actions** tab in the GitHub repository.
+2. Select the **Release** workflow from the left sidebar.
+3. Click **Run workflow**:
+   - Leave `version` blank to release the current version in `lib/iuid/version.rb`.
+   - Or provide a version (e.g. `0.2.0`) to automatically bump `version.rb`, commit, and tag.
+4. Click **Run workflow**.
+
+#### Option B: Push a Git Tag
+
+Pushing a version tag (`v*`) automatically runs the workflow and publishes the release:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
 
 ## Contributing to iuid
  
@@ -78,4 +104,3 @@ Simply build and install the gem.
 
 Copyright (c) 2011 mh. See LICENSE.txt for
 further details.
-
